@@ -8,7 +8,7 @@ public class Test {
         // Creamos una pila de String usando StackLink
         Stack<String> pila = new StackLink<>();
 
-        // Insertamos datos
+        // Insertamos datos usando el metodo push 
         pila.push("Uno");
         pila.push("Dos");
         pila.push("Tres");
@@ -31,7 +31,7 @@ public class Test {
         numeros.push(200);
         numeros.push(300);
 
-        System.out.println("\nPila de números:");
+        System.out.println("\nPila de numeros:");
         System.out.println(numeros);
     }
 }

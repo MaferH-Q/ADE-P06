@@ -1,4 +1,4 @@
-package Actividad4;
+package Ejercicio4;
 import Ejercicio1.StackLink;
 import Actividad1.ExceptionIsEmpty;
 import Actividad1.Stack;

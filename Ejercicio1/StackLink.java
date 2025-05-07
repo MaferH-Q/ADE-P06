@@ -1,19 +1,18 @@
 package Ejercicio1;
+import Actividad1.ExceptionIsEmpty;  // Importamos la excepcion -> para lanzar errores si la pila esta vacia
+import Actividad1.Stack;             // Importamos la interfaz Stack -> para implementar la interfaz con los métodos push, pop, entre otros 
+import Actividad2.Node;              // Reutilizamos la clase Node del laboratorio anterior -> para crear la lista enlazada que guarda los datos
 
-
-import Actividad1.ExceptionIsEmpty;  // Importamos la excepción
-import Actividad1.Stack;             // Importamos la interfaz Stack
-import Actividad2.Node;              // Reutilizamos la clase Node del laboratorio anterior
-
-// Esta clase implementa una pila usando una lista enlazada
+// Esta clase  generica que implementa una pila usando una lista enlazada
 public class StackLink<E> implements Stack<E> {
-    private Node<E> top; // Apunta al nodo de arriba (último insertado)
-
+    // Atributo clave 
+    private Node<E> top; // Apunta al nodo de arriba (ultimo insertado)
     public StackLink() {
-        this.top = null; // Al inicio, la pila está vacía
+        this.top = null; // Al inicio -> la pila esta vacia
     }
 
-    // Agrega un elemento al tope de la pila
+    // Agrega al tope 
+    // Inserta el nodo al inicio de la lista, como debe hacer una pila 
     public void push(E x) {
         Node<E> nuevo = new Node<>(x);   // Creamos un nuevo nodo
         nuevo.setNext(top);              // Apuntamos el nuevo nodo al que era el tope anterior
@@ -21,9 +20,10 @@ public class StackLink<E> implements Stack<E> {
     }
 
     // Elimina y devuelve el tope
+    // Elimina el primer nodo de la lista, como una pila LIFO
     public E pop() throws ExceptionIsEmpty {
         if (isEmpty()) {
-            throw new ExceptionIsEmpty("La pila está vacía (pop)");
+            throw new ExceptionIsEmpty("La pila esta vacia (pop)");
         }
         E dato = top.getData();          // Guardamos el dato
         top = top.getNext();             // El tope ahora es el siguiente nodo
@@ -31,6 +31,7 @@ public class StackLink<E> implements Stack<E> {
     }
 
     // Devuelve el tope sin eliminarlo
+    // Solo devuelve el dato del nodo (top), sin modificar la estructura 
     public E top() throws ExceptionIsEmpty {
         if (isEmpty()) {
             throw new ExceptionIsEmpty("La pila está vacía (top)");
@@ -38,16 +39,16 @@ public class StackLink<E> implements Stack<E> {
         return top.getData();
     }
 
-    // Verifica si la pila está vacía
+    // Verifica si la pila esta vacia
     public boolean isEmpty() {
         return top == null;
     }
 
     // Muestra el contenido de la pila de arriba hacia abajo
     public String toString() {
-        if (isEmpty()) return "Pila vacía";
+        if (isEmpty()) return "Pila vacia";
 
-        StringBuilder sb = new StringBuilder("Contenido de la pila (top → bottom):\n");
+        StringBuilder sb = new StringBuilder("Contenido de la pila (top -> bottom):\n");
         Node<E> actual = top;
         while (actual != null) {
             sb.append("- ").append(actual.getData()).append("\n");
